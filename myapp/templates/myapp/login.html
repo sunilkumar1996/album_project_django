@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2 class="text-center alert alert-info">Login To Countinue</h2>
+                {% if messages %}
+                    {% for messgae in messages %}
+                        <div class="alert alert-success" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% for fm in form %}
+                        {{ fm.label_tag }}
+                        {{ fm }}
+                        {{ fm.errors|striptags }}
+                        <br>
+                        {% endfor %}
+                        <input class="btn btn-primary mt-3" type="submit" value="Login">
+                            <a class="btn btn-info mt-3" href="{% url 'signup' %}">Sign-Up</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endblock content %}
